@@ -1,3 +1,3 @@
 # ReactJS
 practice from skillBox
-ADD COMPONENTS
+ADD COMPONENTS in Card
