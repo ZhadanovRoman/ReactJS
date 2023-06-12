@@ -6,67 +6,11 @@
     justify-content: space-between;
 }
 
-.karmaCounter > * + * {
-    padding: 0 0 0 4px;
-}
-
-.karmaValue {
-    color: var(--greyC4);
-}
-
-.commentsButton{
-    display: flex;
-    align-items: normal;
-    padding-top: 4px;
-}
-.commentsButton svg{
-    margin-right: 5px;
-}
-
-.commentsButton * {
-    color: var(--greyC4);
-}
-
-.commentNumber{
-    padding: 0 0 0 6px;
-    font-size: 12px;
-    line-height: 14px;
-}
-.shareButton{
-    margin-right: 15px;
-}
-
 @media all and (min-width: 1024px){
-
     .controls{
         position: absolute;
         top: 30px;
         right: 3.5%;
         padding: 0;
-    }
-    
-    .karmaCounter{
-        display: flex;
-        flex-direction: column;
-    }
-    .up{
-margin-bottom: 5px;
-    }
-    .karmaValue{
-        padding: 0;
-        color: var(--black);
-        margin-bottom: 5px;
-    }
-    
-    .down{
-        padding: 0;
-    }
-    .commentsButton{
-        display: none;
-    }
-    
-    
-    .actions{
-        display: none;
-    }
+    }    
 }
