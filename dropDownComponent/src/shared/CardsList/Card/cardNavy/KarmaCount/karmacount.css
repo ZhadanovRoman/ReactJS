@@ -1,0 +1,25 @@
+.karmaCounter > * + * {
+    padding: 0 0 0 4px;
+}
+
+.karmaValue {
+    color: var(--greyC4);
+}
+@media all and (min-width: 1024px){
+    .karmaCounter{
+        display: flex;
+        flex-direction: column;
+    }
+    .up{
+margin-bottom: 5px;
+    }
+    .karmaValue{
+        padding: 0;
+        color: var(--black);
+        margin-bottom: 5px;
+    }
+    
+    .down{
+        padding: 0;
+    }
+}
