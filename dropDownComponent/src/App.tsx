@@ -25,8 +25,7 @@ import { Dropdown } from './shared/Dropdown/Dropdown';
               <br/>
               <Dropdown 
               onClose={()=> console.log('closed')} 
-              onOpen={()=>console.log('open')} 
-              isOpen={false}
+              onOpen={()=>console.log('open')}
               button={<button>Test</button>}>
               <CardsList/>
               </Dropdown>
