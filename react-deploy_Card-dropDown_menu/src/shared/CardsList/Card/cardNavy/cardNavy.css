@@ -1,0 +1,16 @@
+
+.controls{
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+@media all and (min-width: 1024px){
+    .controls{
+        position: absolute;
+        top: 30px;
+        right: 3.5%;
+        padding: 0;
+    }    
+}
