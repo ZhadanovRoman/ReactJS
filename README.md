@@ -1,3 +1,4 @@
 # ReactJS
-practice from skillBox
-ADD COMPONENTS in Card splitting into atoms
+______
+
+<img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/1.bmp">
