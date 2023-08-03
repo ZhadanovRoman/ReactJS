@@ -1,0 +1,17 @@
+.main-container {
+    display: flex;
+    height: max-content;
+    margin: 0 auto;
+    background-color: var(--bgF1);
+    overflow: hidden;
+  }
+  @media (max-width: 1439.5px) and (min-width: 835px) {
+    .main-container {
+        max-width: 1439px;
+    }
+    }
+    @media (max-width: 835px) and (min-width: 200px) {
+      .main-container {
+          max-width: 834px;
+          flex-direction: column;
+      }}
