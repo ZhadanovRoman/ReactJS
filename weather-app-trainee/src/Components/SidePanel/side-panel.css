@@ -1,0 +1,399 @@
+:root {
+    --accent: #EC6E4D;
+    --bgF1: #F1F1F1;
+    --background-dark: #100E1C;
+    --panel-dark: #212331;
+    --light-gray: #E6E6E6;
+    --whiteFF: #FFFFFF;
+    --gray48: #48484A;
+    --grayD3: #D3D3D3;
+    --hintAC: #ACACAC;
+    --fontf: 'Rubik';
+    --fontS64: 64px;
+    --fontS36: 36px;
+    --fontW4: 400;
+    --fontW5: 500;
+    --fontW7: 700;
+    --fontW9: 900;
+  }
+  /*//CHECKBOX//*/
+  .sideP-check{
+    position: absolute;
+    top: 7.5%;
+    right: 6%;
+  }
+  .sideP-check-inpt{
+    position: absolute;
+    opacity: 0;
+    width: 64;
+    height: 32px;
+    
+  }
+  .sideP-check-box{
+    position: relative;
+    width: 57px;
+    height: 25px;
+    border: 2px solid var(--hintAC);
+    border-radius: 18px ;
+    padding: 2px;
+    cursor: pointer;
+  }
+  .sideP-check-circle{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    left: 3%;
+    border-radius: 50%;
+    background: #48484A;
+    transition: left .25s linear;
+  }
+  
+  /*------------------------*/
+  
+  
+  .title {
+    margin-right: 24px;
+    font-family: var(--fontf);
+    font-weight: var(--fontW7);
+    font-size: 24px;
+    line-height: 24px;
+    color: var(--gray48)
+  }
+  
+  .sideP {
+    position: relative;
+    width: 32%;
+    max-height: max-content;
+  }
+  
+  .sideP-container {
+   
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 43px;
+    background-color: var(--whiteFF);
+    background-image: url(../../../public/img/Cloud-backgroundJPG.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 35%;
+    background-size: contain;
+  }
+  
+  
+  
+  .sideP-btn {
+    width: 39%;
+    margin: 0 0 5.23% 9%;
+    background-color: var(--whiteFF);
+    padding: 2.8% 3.4%;
+    font-family: var(--fontf);
+    font-size: 18px;
+    line-height: 21.33px;
+    font-weight: var(--fontW7);
+    border: 2px solid var(--hintAC);
+    border-radius: 10px;
+    color: var(--gray48);
+    cursor: pointer;
+  }
+  
+  .sideP-precipitation-img {
+    width: 200px;
+    height: 200px;
+    align-self: center;
+  }
+  
+  .sideP-temperature {
+    align-self: center;
+    margin-bottom: 3.7%;
+  }
+  
+  .sideP-temperature-num {
+    color: var(--gray48);
+    font-family: var(--fontf);
+    font-weight: var(--fontW9);
+    font-size: 96px;
+    line-height: 113.76px;
+    margin-right: 5px;
+    z-index: 9999;
+  }
+  
+  .sideP-temperature-celsius {
+    color: var(--gray48);
+    font-family: var(--fontf);
+    font-weight: var(--fontW5);
+    font-size: 50px;
+    line-height: 59.25px;
+  }
+  
+  .sideP-precipitation-text {
+    margin: 0;
+    margin-bottom: 3.7%;
+    align-self: center;
+    font-family: var(--fontf);
+    font-weight: var(--fontW7);
+    color: var(--gray48);
+    font-size: 36px;
+    line-height: 36px;
+  }
+  
+  .sideP-temperature-feel {
+    margin: 0;
+    margin-bottom: 17%;
+    align-self: center;
+    font-family: var(--fontf);
+    font-size: 18px;
+    line-height: 21.33px;
+    font-weight: var(--fontW4);
+    color: var(--hintAC);
+  }
+  
+  .sideP-day-date {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5.6%;
+  }
+  
+  .sideP-location-city,
+  .sideP-date-month,
+  .sideP-date-num,
+  .sideP-date-week,
+  .sideP-day {
+    font-family: var(--fontf);
+    font-size: 18px;
+    line-height: 21.33px;
+    font-weight: var(--fontW4);
+    color: var(--hintAC);
+  }
+  
+  .sideP-location {
+    display: flex;
+   justify-content: center;
+    margin-bottom: 7%;
+  }
+  
+  .sideP-location-img {
+    margin-right: 10px;
+  }
+  
+  .sideP-location-city {
+    align-self: center;
+  }
+  
+  /*///search-menu///*/
+
+  .sideP-second-container {
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    left: -460px;
+    top: 0;
+    padding-top: 9.5%;
+    background-color: var(--whiteFF);
+    transition:  0.5s linear;
+    z-index: 9999;
+   
+  }
+    
+    .sideP-close-block {
+      position: relative;
+      align-self: end;
+      margin: 0 45px 9.5% 0;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+    
+    .sideP-btn-close2,
+    .sideP-btn-close {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      width: 28px;
+      height: 3px;
+      background-color: var(--gray48);
+      transform: rotate(45deg);
+    }
+    
+    .sideP-btn-close2 {
+      transform: rotate(-45deg);
+    }
+    
+    .sideP-search-block {
+      display: flex;
+      margin: 0 auto;
+      justify-content: space-between;
+      width: 80%;
+      margin-bottom: 119.9%;
+    }
+    
+    .sideP-input {
+      width: 51%;
+      padding: 0;
+      padding: 4% 5% 4% 12%;
+      border-radius: 10px;
+      border: none;
+      outline: 2px solid var(--hintAC);
+      color: var(--gray48);
+      font-family: var(--fontf);
+      font-size: 18px;
+      line-height: 21.33px;
+      font-weight: var(--fontW7);
+      background: url(../../../public/img/search.svg) no-repeat 8% 50%;
+    }
+    
+    .sideP-btn-search {
+      width: 26.3%;
+      border-radius: 10px;
+      padding: 4% 2% 4% 2%;
+      border: none;
+      text-align: center;
+      background-color: var(--whiteFF);
+      outline: 2px solid var(--hintAC);
+      color: var(--gray48);
+      font-family: var(--fontf);
+      font-size: 18px;
+      line-height: 21.33px;
+      font-weight: var(--fontW7);
+      cursor: pointer;
+    }
+
+    @media (max-width: 1439.5px) and (min-width: 835px) {
+   
+      .sideP-check{
+        top: 5.2%;
+      }
+
+      .sideP {
+          width: 40.7%;
+      }
+      .sideP-container {
+          padding: 0;
+          padding-top: 16%;
+        background-size: 104%; 
+      }
+      .sideP-btn {
+          width: 54.7%;
+          padding: 3.85% 3.81%;
+          margin: 0 0 75.9% 28px;
+      }
+  
+      .sideP-precipitation-img {
+          margin-bottom: 71.8%;
+      }
+  
+      .sideP-temperature {
+          margin-bottom: 5.1%;
+      }
+      .sideP-precipitation-text{
+        margin-bottom: 5.1%;
+      }
+      .sideP-temperature-feel{
+        margin-bottom: 23.5%;
+      }
+
+
+      .sideP-day-date {
+          margin-bottom: 10.5%;
+      }
+  
+      .sideP-location {
+          margin-bottom: 10.6%;
+      }
+      .sideP-second-container{
+          padding-top: 59px;
+      }
+      .sideP-close-block {
+          margin-right: 27px;
+          margin-bottom: 37px;
+      }
+      .sideP-search-block {
+          width: 83.2%;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 292%;
+      }
+      .sideP-search-block input{
+          width: inherit;
+          margin-bottom: 20px;
+      }
+      .sideP-btn-search{
+          width: 35.5%;
+      }
+  }
+  @media (max-width: 835px) and (min-width: 200px) {
+    .sideP-check{
+      top: 6.5%;
+    }
+
+    .sideP {
+        width: 100%;
+    }
+
+    .sideP-container {
+        padding-top: 31px;
+        background-position: 0 17%;
+       
+    }
+
+    .sideP-btn {
+        width: 48%;
+        padding: 14.5px 3.81%;
+        margin: 0 0 9px 30px;
+    }
+    .sideP-temperature {
+      margin-top: -26px;
+     margin-bottom: 16px;
+  }
+    .sideP-precipitation-text{
+      margin-bottom: 16px;
+    }
+    .sideP-temperature-feel{
+      margin-bottom: 76px;
+    }
+     .sideP-day-date{
+        width: 95%;
+        margin: 0 auto;
+        margin-bottom: 25px;
+     }
+     
+    .sideP-precipitation-img {
+        z-index: 1;
+    }
+    
+    .sideP-location{
+        width: 90%;
+        margin-bottom: 34px;
+    }
+/*//BURGER MENU//*/
+.sideP-second-container{
+    padding-top: 38px;
+}
+.sideP-close-block{
+    margin-right: 50px;
+    margin-bottom: 35px;
+}
+.sideP-search-block{
+    flex-direction: column;
+    align-items: center;
+    width: 81%;
+    margin: 0;
+    padding-left: 5%;
+  margin-bottom: 443px;
+}
+.sideP-btn-search{
+  padding-top: 14.5px;
+  padding-bottom: 14.5px;
+
+}
+.sideP-input{
+    width: inherit;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 14px;
+}
+}
