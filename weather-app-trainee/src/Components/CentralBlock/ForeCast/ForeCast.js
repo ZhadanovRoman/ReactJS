@@ -2,9 +2,12 @@ import { useState } from 'react';
 
 import './fore-cast.css';
 import { connect } from "react-redux";
+import CardWeek from './CardWeek/CardWeek';
+import CardHour from './CardHour/CardHour';
 
 function ForeCast(btnLink) {
-    let linkState = btnLink.btnState.btnSwip;
+  
+    let linkState = btnLink.boxState.btnSwip;
 
     const [weekBtnState, setWeekBtnState] = useState({});
     const [hourBtnState, setHourBtnState] = useState({});
@@ -64,7 +67,8 @@ function ForeCast(btnLink) {
             }
         })
     }
-
+  
+    
 
     return (
         <>
@@ -82,154 +86,32 @@ function ForeCast(btnLink) {
                     </span>
                     <div className="forecast-cards-hour" style={displaySecond}>
 
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">15:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">16:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">17:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">18:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">19:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">20:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-
-                        <div class="forecast-card-hour">
-                            <span className="card-hour-time">21:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">22:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div class="forecast-card-hour">
-                            <span className="card-hour-time">23:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">24:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div class="forecast-card-hour">
-                            <span className="card-hour-time">01:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
-
-                        <div className="forecast-card-hour">
-                            <span className="card-hour-time">02:00</span>
-                            <span className="card-hour-temperature">10°C</span>
-                        </div>
+                        <CardHour props={{time:'15:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'16:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'17:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'18:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'19:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'20:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'21:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'22:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'23:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'24:00',temperature: '10°C' }}/>
+                        <CardHour props={{time:'01:00',temperature: '10°C' }}/>
+                            <CardHour props={{time:'02:00',temperature: '10°C' }}/>
+                        
 
                     </div>
 
                     <div className="forecast-cards-week" style={displayFirst}>
 
-                        <div className="forecast-card-week">
-                            <div className="card-week-date">
-                                <span className="card-week-day">Завтра</span>
-                                <span className="card-week-number"></span>
-                                <span className="card-week-month"></span>
-                            </div>
-                            <div class="card-week-temperature">
-                                <span className="card-week-temp">10°C</span>
-                                <span className="card-week-perceivedtemp">4°C</span>
-                            </div>
-                        </div>
-
-                        <div className="forecast-card-week">
-                            <div className="card-week-date">
-                                <span className="card-week-day">Пн</span>
-                                <span className="card-week-number">15</span>
-                                <span className="card-week-month">Мар</span>
-                            </div>
-                            <div className="card-week-temperature">
-                                <span className="card-week-temp">10°C</span>
-                                <span className="card-week-perceivedtemp">4°C</span>
-                            </div>
-                        </div>
-
-                        <div className="forecast-card-week">
-                            <div className="card-week-date">
-                                <span className="card-week-day">Вт</span>
-                                <span className="card-week-number">16</span>
-                                <span className="card-week-month">Мар</span>
-                            </div>
-                            <div className="card-week-temperature">
-                                <span className="card-week-temp">10°C</span>
-                                <span className="card-week-perceivedtemp">4°C</span>
-                            </div>
-                        </div>
-
-                        <div className="forecast-card-week">
-                            <div className="card-week-date">
-                                <span className="card-week-day">Ср</span>
-                                <span className="card-week-number">17</span>
-                                <span className="card-week-month">Мар</span>
-                            </div>
-                            <div className="card-week-temperature">
-                                <span className="card-week-temp">10°C</span>
-                                <span className="card-week-perceivedtemp">4°C</span>
-                            </div>
-                        </div>
-
-                        <div className="forecast-card-week">
-                            <div className="card-week-date">
-                                <span className="card-week-day">Чт</span>
-                                <span className="card-week-number">18</span>
-                                <span className="card-week-month">Мар</span>
-                            </div>
-                            <div className="card-week-temperature">
-                                <span className="card-week-temp">10°C</span>
-                                <span className="card-week-perceivedtemp">4°C</span>
-                            </div>
-                        </div>
-
-                        <div className="forecast-card-week">
-                            <div className="card-week-date">
-                                <span className="card-week-day">Пт</span>
-                                <span className="card-week-number">19</span>
-                                <span className="card-week-month">Мар</span>
-                            </div>
-                            <div className="card-week-temperature">
-                                <span className="card-week-temp">10°C</span>
-                                <span className="card-week-perceivedtemp">4°C</span>
-                            </div>
-                        </div>
-
-                        <div class="forecast-card-week">
-                            <div class="card-week-date">
-                                <span className="card-week-day">Сб</span>
-                                <span className="card-week-number">20</span>
-                                <span className="card-week-month">Мар</span>
-                            </div>
-                            <div class="card-week-temperature">
-                                <span className="card-week-temp">10°C</span>
-                                <span className="card-week-perceivedtemp">4°C</span>
-                            </div>
-                        </div>
+                        <CardWeek props={{ day: 'Завтра,', number :'', month :'', temp:'10°C', perceivedtemp:'4°C'}}/>
+                        <CardWeek props={{ day: 'Пн,', number :'15', month :'Мар', temp:'10°C', perceivedtemp:'4°C'}}/>
+                        <CardWeek props={{day:'Вт,', number:'16', month:'Мар', temp:'10°C', perceivedtemp:'4°C'}}/>
+                        <CardWeek props={{ day:'Ср,', number :'17', month :'Мар', temp:'10°C', perceivedtemp:'4°C'}}/>
+                        <CardWeek props={{ day:'Чт,', number :'18', month :'Мар', temp:'10°C', perceivedtemp:'4°C'}}/>
+                        <CardWeek props={{ day:'Пт,', number :'19', month :'Мар', temp:'10°C', perceivedtemp:'4°C'}}/>
+                        <CardWeek props={{day:'Сб,', number:'20', month:'Мар', temp:'10°C', perceivedtemp:'4°C'}}/>
+                      
 
                     </div>
                     <span className="cards-right-btn" tabIndex="8">
@@ -241,7 +123,8 @@ function ForeCast(btnLink) {
     )
 }
 function mapStateToProps(state) {
-    return { btnState: state }
+    return { boxState: state }
+    
 }
 
 export default connect(mapStateToProps)(ForeCast);

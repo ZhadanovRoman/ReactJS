@@ -1,0 +1,28 @@
+.city-list{
+  
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    
+    margin: 0;
+}
+
+.city-list-li{
+   
+    height: 70px;
+    width: 82%;
+    margin-bottom: 10px;
+    list-style-type: none;
+    font-family: var(--fontf);
+    font-weight: var(--fontW7);
+    font-size: 18px;
+    line-height:  18px;
+  
+   border-radius: 10px;
+}
+ 
+@media (max-width: 834px) and (min-width: 100px) {
+    .city-list{
+        height: 410px;
+    }
+}

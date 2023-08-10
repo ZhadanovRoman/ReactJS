@@ -1,4 +1,5 @@
 
+import HumidityScale from './HumidityScale/HumidityScale';
 import './detail.css';
 
 function Detail(){
@@ -24,6 +25,7 @@ function Detail(){
                             <span className="block-data-number">84</span>
                             <span className="block-data-text">%</span>
                         </div>
+                        <HumidityScale/>
                     </div>
                 </div>
                 <div className="detail-second-row">
@@ -34,7 +36,7 @@ function Detail(){
                             <span className="block-data-text">км</span>
                         </div>
                     </div>
-                    <div class="detail-pressure-block">
+                    <div className="detail-pressure-block">
                         <h4 className="detail-block-title second-row-title">Давление</h4>
                         <div className="detail-block-data">
                             <span className="block-data-number">742</span>

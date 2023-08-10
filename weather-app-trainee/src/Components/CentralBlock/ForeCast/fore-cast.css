@@ -86,6 +86,23 @@
     background: var(--whiteFF);
     border-radius: 8.362px;
     filter: drop-shadow(0 7px 12px rgba(0, 0, 0, 0.05));
+    
+}
+.forecast-card-fake{
+    position: relative;
+    width: 13.8%;
+    height: 114px;
+    padding: 2% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--whiteFF);
+    border-radius: 8.362px;
+    filter: drop-shadow(0 7px 12px rgba(0, 0, 0, 0.05));
+}
+.forecast-card-fake:nth-child(n+7){
+    display: none;
 }
 
 /*//////////*/
@@ -99,10 +116,12 @@
     left: 0;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 8.362px;
+    
 }
 /*/////CARD_WEEK_LINK//////*/
 .forecast-card-week:nth-child(n):after {
-    background-image: url(../../../../public/img/weather-shtorm.svg);
+    background-image:url(../../../../public/img/weather-shtorm.svg);
 }
 
 .forecast-card-week:nth-child(-n+3):after {
@@ -128,6 +147,9 @@
 .forecast-card-hour:nth-child(n+7){
     display: none;
 }
+.card-week-day{
+    margin-right: 3px;
+}
 
 .card-hour-time,
 .card-hour-temperature,
@@ -140,7 +162,8 @@
     font-weight: var(--fontW4);
     font-size: 14px;
     line-height: 16.59px;
-    color: var(--gray48)
+    color: var(--gray48);
+    z-index: 0;
 }
 
 .card-week-perceivedtemp {

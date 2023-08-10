@@ -9,11 +9,10 @@ function App() {
   
   return (
    
-    <div className="app">
-          <MainContainer/>
-         
+    <div className = "app">
+          <MainContainer/>  
     </div>
-   
+  
   );
 }
 

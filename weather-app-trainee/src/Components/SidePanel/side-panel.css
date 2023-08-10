@@ -11,6 +11,7 @@
     --fontf: 'Rubik';
     --fontS64: 64px;
     --fontS36: 36px;
+    --fontW3: 300;
     --fontW4: 400;
     --fontW5: 500;
     --fontW7: 700;
@@ -43,9 +44,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 26px;
-    height: 26px;
-    left: 3%;
+    width: 24px;
+    height: 24px;
+    left: 5%;
+    top: 9%;
     border-radius: 50%;
     background: #48484A;
     transition: left .25s linear;
@@ -155,7 +157,10 @@
     justify-content: space-around;
     margin-bottom: 5.6%;
   }
-  
+  .sideP-date-week{
+    margin-right: 5px;
+  }
+
   .sideP-location-city,
   .sideP-date-month,
   .sideP-date-num,
@@ -188,6 +193,7 @@
     position: absolute;
     visibility: hidden;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     left: -460px;
@@ -228,7 +234,7 @@
       margin: 0 auto;
       justify-content: space-between;
       width: 80%;
-      margin-bottom: 119.9%;
+      margin-bottom: 30px;
     }
     
     .sideP-input {
@@ -243,7 +249,7 @@
       font-size: 18px;
       line-height: 21.33px;
       font-weight: var(--fontW7);
-      background: url(../../../public/img/search.svg) no-repeat 8% 50%;
+      background: url(../../../public/img/search.svg) no-repeat 4% 50%;
     }
     
     .sideP-btn-search {
@@ -315,7 +321,7 @@
           width: 83.2%;
           flex-direction: column;
           align-items: center;
-          margin-bottom: 292%;
+          
       }
       .sideP-search-block input{
           width: inherit;
@@ -383,7 +389,7 @@
     width: 81%;
     margin: 0;
     padding-left: 5%;
-  margin-bottom: 443px;
+  margin-bottom: 30px;
 }
 .sideP-btn-search{
   padding-top: 14.5px;
