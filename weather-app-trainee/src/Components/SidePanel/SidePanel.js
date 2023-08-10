@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
-
+import React, { useState} from 'react';
 import './side-panel.css';
 
 import { useDispatch } from 'react-redux';
-import { btnsSwipperState } from '../../action';
+import { btnsSwipperState, PreloadState } from '../../action';
+import CitysList from './CitysList/CitysList';
+import ErrorSpan from './ErrorSpan/ErrorSpan';
 
+let citysArr = [];
 
 function SidePanel() {
 
     const dispatch = useDispatch();
     const [searchOpen, setSearchOpen] = useState({});
     const [isOpen, setIsOpen] = useState(true);
-    //const [buttonSwiper, setButtonSwiper] = useState({});
     const [buttonThemeChange, setButtonThemeChange] = useState({});
     const [containerBg, setContainerBg] = useState({});
 
-  // dispatch(btnsSwipperState(buttonSwiper));
+
 
     function menuOpen() {
         setSearchOpen(() => {
             return {
                 visibility: 'visible',
-                left: '0px'
+                left: '0px',
+
             }
         })
     }
@@ -35,6 +37,7 @@ function SidePanel() {
         })
 
     }
+
     function themeDarkOn() {
         setIsOpen((prev) => !prev);
         if (isOpen) {
@@ -52,7 +55,7 @@ function SidePanel() {
                     background: 'var(--accent)'
                 }
             })
-            dispatch(btnsSwipperState('./img/active-dark.svg' ));
+            dispatch(btnsSwipperState('./img/active-dark.svg'));
         } else {
             document.documentElement.style.setProperty('--gray48', '#48484A');
             document.documentElement.style.setProperty('--bgF1', '#F1F1F1');
@@ -64,15 +67,70 @@ function SidePanel() {
             })
             setButtonThemeChange(() => {
                 return {
-                    left: '3%',
+                    left: '5%',
                     background: 'var(--gray48)'
                 }
             })
-            dispatch(btnsSwipperState('./img/active.svg' ));
+            dispatch(btnsSwipperState('./img/active.svg'));
 
         }
 
     }
+
+    /**************************************** передаем город введенный в инпут */
+    const [inputVal, setInputVal] = useState('');
+    const [locationCity, setLocationSity] = useState('Москва');
+    const [errorUps,setErrorUps] = useState('')
+    function sendData(e) {
+        e.preventDefault();
+        getData(inputVal)
+    }
+
+    async function getData(city) {
+
+        const res = await fetch(`https://nominatim.openstreetmap.org/search.php?q=${city}&format=json&addressdetails=1&limit=1`);
+        const data = await res.json();
+
+        if (data.length > 0) {
+            setErrorUps(()=>{''})
+            let cityName = city.charAt(0).toUpperCase() + city.slice(1);
+               if(citysArr.indexOf(cityName)===-1){
+                citysArr.push(cityName);
+               }
+            
+            getCityData(data[0].lat,data[0].lon)
+            dispatch(PreloadState(false))
+            setLocationSity(() => {
+                return cityName;
+            })
+            menuClose()
+        }else{
+              setErrorUps(()=>{
+                return 'Упс! Город не найден,попробуйте другой'
+              })
+        }
+    }
+
+   async function getCityData(lat,lon){
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${'bed39340cb26889d5c7d1fa38fae983b'}&units=metric&lang=ru`)
+           const data = await res.json();
+          
+          dispatch(PreloadState(true))
+               console.log(data);
+    }
+
+    const regexp = /\w/;
+   function inptValid(event){ 
+    if(regexp.test(event.target.value)===true){
+        setErrorUps(()=>{
+            return 'Только КИРИЛЛИЦА!!!'
+        })
+    }else{setErrorUps(()=>{''})}
+    setInputVal(event.target.value)
+}
+
+
+    
 
 
     return (
@@ -84,7 +142,7 @@ function SidePanel() {
                     <button onClick={menuOpen} className="sideP-btn" tabIndex="1">Поиск города</button>
 
                     <label className="sideP-check" htmlFor="check">
-                        <input type="checkbox" class="sideP-check-inpt" />
+                        <input type="checkbox" className="sideP-check-inpt" />
                         <div className="sideP-check-box" onClick={themeDarkOn}>
                             <div className="sideP-check-circle" style={buttonThemeChange}>
                                 <img src="./img/moon.svg" alt="checkbox button" />
@@ -116,7 +174,7 @@ function SidePanel() {
                     </div>
                     <div className="sideP-location">
                         <img className="sideP-location-img" src="./img/location-on.svg" alt="location" />
-                        <span className="sideP-location-city">Москва</span>
+                        <span className="sideP-location-city" >{locationCity}</span>
                     </div>
                 </div>
 
@@ -125,10 +183,12 @@ function SidePanel() {
                         <span className="sideP-btn-close"></span>
                         <span className="sideP-btn-close2"></span>
                     </div>
-                    <div className="sideP-search-block">
-                        <input className="sideP-input" tabIndex="3" />
-                        <button className="sideP-btn-search" tabIndex="4">Найти</button>
-                    </div>
+                    <ErrorSpan errorText={errorUps}/>
+                    <form className="sideP-search-block" onSubmit={sendData}>
+                        <input className="sideP-input"  tabIndex="3" onChange={inptValid} />
+                        <button type='submit' className="sideP-btn-search" tabIndex="4">Найти</button>
+                    </form>
+                    <CitysList locationCity={citysArr}/>
                 </div>
 
             </section>

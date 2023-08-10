@@ -1,0 +1,17 @@
+.search-error-span{
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    color: var(--accent);
+    font-family: var(--fontf)
+}
+
+@media (max-width: 1439.5px) and (min-width: 835px) {
+    .search-error-span {
+        top:5.8%;
+    }
+    }
+    @media (max-width: 835px) and (min-width: 200px) {
+        .search-error-span {
+            top:10%;
+      }}

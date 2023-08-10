@@ -4,3 +4,11 @@ export const btnsSwipperState = (st)=>(
     stat: st
 }
 );
+
+export const PreloadState = (st)=>(
+   
+        {
+            type: 'ADD_PRELOAD_STATE',
+            stat: st
+        }
+);
