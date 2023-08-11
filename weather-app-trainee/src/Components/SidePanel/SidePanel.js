@@ -1,15 +1,15 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import './side-panel.css';
 
-import { useDispatch } from 'react-redux';
-import { btnsSwipperState, PreloadState } from '../../action';
+import { useDispatch, connect } from 'react-redux';
+import { btnsSwipperState, CityData, PreloadState } from '../../action';
 import CitysList from './CitysList/CitysList';
 import ErrorSpan from './ErrorSpan/ErrorSpan';
 
 let citysArr = [];
 
-function SidePanel() {
-
+function SidePanel(props) {
+    let selectedCity = props.boxState.selectedCityItem;
     const dispatch = useDispatch();
     const [searchOpen, setSearchOpen] = useState({});
     const [isOpen, setIsOpen] = useState(true);
@@ -78,12 +78,23 @@ function SidePanel() {
     }
 
     /**************************************** передаем город введенный в инпут */
+   /* const [getDataState,setGetDataState] = useState('')*/
+    useEffect(()=>{
+        if(selectedCity.length>0){
+            getData(selectedCity);
+        }
+    },[selectedCity])
+
+    
+
+
     const [inputVal, setInputVal] = useState('');
     const [locationCity, setLocationSity] = useState('Москва');
     const [errorUps,setErrorUps] = useState('')
     function sendData(e) {
         e.preventDefault();
-        getData(inputVal)
+        dispatch(PreloadState(false));
+        getData(inputVal);
     }
 
     async function getData(city) {
@@ -99,7 +110,7 @@ function SidePanel() {
                }
             
             getCityData(data[0].lat,data[0].lon)
-            dispatch(PreloadState(false))
+            
             setLocationSity(() => {
                 return cityName;
             })
@@ -115,7 +126,8 @@ function SidePanel() {
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${'bed39340cb26889d5c7d1fa38fae983b'}&units=metric&lang=ru`)
            const data = await res.json();
           
-          dispatch(PreloadState(true))
+          dispatch(PreloadState(true));
+          dispatch(CityData(data))
                console.log(data);
     }
 
@@ -197,4 +209,8 @@ function SidePanel() {
 
 
 }
-export default SidePanel;
+function mapStateToProps(state) {
+    return { boxState: state }
+    
+}
+export default connect(mapStateToProps)(SidePanel);
