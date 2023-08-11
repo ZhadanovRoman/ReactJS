@@ -25,14 +25,12 @@
     background-color: var(--grayD3);
     border-radius: 10px;
 }
-.humidity-scale-bg::after{
-    content: '';
+.humidity-scale-span{
     position: absolute;
     width: 84%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 100;
     background-color: var(--accent);
     border-radius: 10px;
 }
