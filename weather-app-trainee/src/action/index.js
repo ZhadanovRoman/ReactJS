@@ -26,3 +26,10 @@ export const SelectedCityItem = (city) => (
         city: city
     }
 )
+
+export const CityDataArray = (data) => (
+    {
+        type: 'ADD_CITY_DATA_ARR',
+        data: data
+    }
+)
