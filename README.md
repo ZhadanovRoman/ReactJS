@@ -1,6 +1,6 @@
 # ReactJS
 
-Перенос адптивной верстки на React.js, + функционал. Рабочее приложение <a href='https://zrs-eclid.tmweb.ru/')>zrs-eclid.tmweb.ru</a>
+Перенос адптивной верстки на React.js, + функционал. Рабочее приложение <a href="https://zrs-eclid.tmweb.ru/" target="_blank")>zrs-eclid.tmweb.ru</a>
 
 _____
 
