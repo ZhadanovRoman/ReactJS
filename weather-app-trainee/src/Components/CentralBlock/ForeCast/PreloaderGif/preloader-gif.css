@@ -1,16 +1,18 @@
 .lds-ellipsis {
     display: inline-block;
     position: relative;
+    
     width: 80px;
     height: 80px;
+    z-index: 150;
   }
   .lds-ellipsis div {
     position: absolute;
-    top: 33px;
-    width: 13px;
+    top: 50%;
+    width: 15px;
     height: 13px;
     border-radius: 50%;
-    background: red;
+    background: var(--gray48);
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
     z-index: 9999;
   }
@@ -53,4 +55,18 @@
     100% {
       transform: translate(24px, 0);
     }
+  }
+
+  .preload-block{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--whiteFF);
+    z-index: 100;
+    border-radius: 8.362px;
   }

@@ -9,14 +9,17 @@ import ErrorSpan from './ErrorSpan/ErrorSpan';
 let citysArr = [];
 
 function SidePanel(props) {
+    let dataForSidePanel = props.boxState.cityDataArr  //подробные данные массив в часах
+    
+    
     let selectedCity = props.boxState.selectedCityItem;
     const dispatch = useDispatch();
     const [searchOpen, setSearchOpen] = useState({});
     const [isOpen, setIsOpen] = useState(true);
     const [buttonThemeChange, setButtonThemeChange] = useState({});
     const [containerBg, setContainerBg] = useState({});
-
-
+    
+  
 
     function menuOpen() {
         setSearchOpen(() => {
@@ -78,19 +81,20 @@ function SidePanel(props) {
     }
 
     /**************************************** передаем город введенный в инпут */
-   /* const [getDataState,setGetDataState] = useState('')*/
+   
     useEffect(()=>{
         if(selectedCity.length>0){
             getData(selectedCity);
-        }
-    },[selectedCity])
+        }else{}
+    },[ selectedCity])
 
     
-
+ 
 
     const [inputVal, setInputVal] = useState('');
     const [locationCity, setLocationSity] = useState('Москва');
     const [errorUps,setErrorUps] = useState('')
+
     function sendData(e) {
         e.preventDefault();
         dispatch(PreloadState(false));
@@ -101,7 +105,7 @@ function SidePanel(props) {
 
         const res = await fetch(`https://nominatim.openstreetmap.org/search.php?q=${city}&format=json&addressdetails=1&limit=1`);
         const data = await res.json();
-
+        
         if (data.length > 0) {
             setErrorUps(()=>{''})
             let cityName = city.charAt(0).toUpperCase() + city.slice(1);
@@ -123,12 +127,11 @@ function SidePanel(props) {
     }
 
    async function getCityData(lat,lon){
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${'bed39340cb26889d5c7d1fa38fae983b'}&units=metric&lang=ru`)
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${'535f8a50b4bc24608c72fcde2aecb52b'}&units=metric&lang=ru`)
            const data = await res.json();
           
-          dispatch(PreloadState(true));
           dispatch(CityData(data))
-               console.log(data);
+              
     }
 
     const regexp = /\w/;
@@ -142,7 +145,39 @@ function SidePanel(props) {
 }
 
 
-    
+//////////// обработка и вывод данных в Бар
+const days = [
+    'Вс,', 'Пн,', 'Вт,', 'Ср,', 'Чт,', 'Пт,', 'Сб,'
+];
+const months = [
+    'янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'
+]
+const [sidePanelIcon,setSidePanelIcon] = useState('./img/snow.svg');
+    const [sidePanelTemp,setSidePanelTemp] = useState('1');
+    const [sidePanelDescr,setSidePanelDescr] = useState('Снег');
+    const [sidePanelFeels,setSidePanelFeels] = useState('-3');
+    const [sidePanelDay,setSidePanelDay] = useState('Вс,');
+    const [sidePanelDayNum,setSidePanelDayNum] = useState('13');
+    const [sidePanelMonth,setSidePanelMonth] = useState('Мар');
+
+useEffect(()=>{
+    if(dataForSidePanel.weather){
+        
+        setSidePanelIcon(() => {
+            return (
+                 `https://openweathermap.org/img/wn/${dataForSidePanel.weather[0].icon}@4x.png`
+            )
+        })
+        setSidePanelTemp(Math.round(dataForSidePanel.main.temp));
+        setSidePanelDescr(dataForSidePanel.weather[0].description.charAt(0).toUpperCase()+dataForSidePanel.weather[0].description.slice(1))
+        setSidePanelFeels(' '+Math.round(dataForSidePanel.main.feels_like))
+        setSidePanelDay(days[new Date().getDay()])
+        setSidePanelDayNum(new Date().getDate()+' ')
+        setSidePanelMonth(months[new Date().getMonth()])
+    }
+        
+},[dataForSidePanel])
+
 
 
     return (
@@ -165,23 +200,23 @@ function SidePanel(props) {
 
 
 
-                    <img className="sideP-precipitation-img" src="./img/snow.svg" alt="snow" />
+                    <img className="sideP-precipitation-img" src={sidePanelIcon} alt="snow" />
 
                     <div className="sideP-temperature">
-                        <span className="sideP-temperature-num">1</span>
+                        <span className="sideP-temperature-num">{sidePanelTemp}</span>
                         <span className="sideP-temperature-celsius">°C</span>
                     </div>
-                    <h2 className="sideP-precipitation-text">Снег</h2>
+                    <h2 className="sideP-precipitation-text">{sidePanelDescr}</h2>
                     <p className="sideP-temperature-feel">Ощущается как
-                        <span className="temperature-feel-num">-3</span>
+                        <span className="temperature-feel-num">{sidePanelFeels}</span>
                         <span className="temperature-feel-celsius">°C</span>
                     </p>
                     <div className="sideP-day-date">
                         <span className="sideP-day">Сегодня</span>
                         <div className="sideP-date">
-                            <span className="sideP-date-week">Вс,</span>
-                            <span className="sideP-date-num">13</span>
-                            <span className="sideP-date-month">мар</span>
+                            <span className="sideP-date-week">{sidePanelDay}</span>
+                            <span className="sideP-date-num">{sidePanelDayNum}</span>
+                            <span className="sideP-date-month">{sidePanelMonth}</span>
                         </div>
                     </div>
                     <div className="sideP-location">

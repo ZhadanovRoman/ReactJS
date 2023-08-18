@@ -7,6 +7,10 @@ import './detail.css';
 function Detail(props) {
     const weatherData = props.boxState.cityData
 
+    const [windDirection, setWindDirection] = useState({});
+    const [windDirectionSpan, setWindDirectionSpan] = useState('СЗ');
+
+    
 
     const [windNum, setWindNum] = useState('7');
     const [humidityNum, setHumidityNum] = useState('84')
@@ -17,10 +21,23 @@ function Detail(props) {
             setWindNum(Math.round(weatherData.wind.speed));
             setHumidityNum(weatherData.main.humidity);
             setVisibilityNum(weatherData.visibility / 1000);
-            setPressureNum(Math.round(weatherData.main.pressure * 0.75))
-        } else { }
+            setPressureNum(Math.round(weatherData.main.pressure * 0.75));
 
-
+            setWindDirection(()=>{
+                return{
+                    transform: 'rotate('+(45+weatherData.wind.deg)+'deg)'
+            }
+          })
+          if(Number(weatherData.wind.deg)>350 || Number(weatherData.wind.deg)<10 ){setWindDirectionSpan('C')};
+          if(Number(weatherData.wind.deg)>10 && Number(weatherData.wind.deg)<80 ){setWindDirectionSpan('CВ')};
+          if(Number(weatherData.wind.deg)>80 && Number(weatherData.wind.deg)<100 ){setWindDirectionSpan('В')};
+          if(Number(weatherData.wind.deg)>100 && Number(weatherData.wind.deg)<170 ){setWindDirectionSpan('ЮВ')};
+          if(Number(weatherData.wind.deg)>170 && Number(weatherData.wind.deg)<190 ){setWindDirectionSpan('Ю')};
+          if(Number(weatherData.wind.deg)>190 && Number(weatherData.wind.deg)<260 ){setWindDirectionSpan('ЮЗ')};
+          if(Number(weatherData.wind.deg)>260 && Number(weatherData.wind.deg)<280 ){setWindDirectionSpan('З')};
+          if(Number(weatherData.wind.deg)>280 && Number(weatherData.wind.deg)<350 ){setWindDirectionSpan('ЮВ')}
+        } else { };
+       
     }, [weatherData])
 
 
@@ -36,8 +53,8 @@ function Detail(props) {
                             <span className="block-data-text">м/с</span>
                         </div>
                         <div className="block-wind-direction">
-                            <img src="./img/directionWind.svg" alt="direction of wind" />
-                            <span className="wind-direction-span">СЗ</span>
+                            <img src="./img/directionWind.svg" style={windDirection} alt="direction of wind" />
+                            <span className="wind-direction-span">{windDirectionSpan}</span>
                         </div>
                     </div>
                     <div className="detail-humidity-block">

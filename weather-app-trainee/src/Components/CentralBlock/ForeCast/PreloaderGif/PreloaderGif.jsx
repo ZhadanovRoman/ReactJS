@@ -18,14 +18,15 @@ function PreloaderGif(preloaderState) {
         } else {
             setCardPreloader(() => {
                 return {
-                    dislay: 'inline-block'
+                    dislay: 'flex'
                 }
             })
         }
     }, [preloaderBoolian])
 
-    return (
+    return ( <div style={cardPreloader} className='preload-block'>
         <div className="lds-ellipsis" style={cardPreloader}><div style={cardPreloader}></div><div></div><div></div><div></div></div>
+        </div>
     )
 };
 function mapStateToProps(state) {

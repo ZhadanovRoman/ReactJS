@@ -9,9 +9,9 @@ function CityLiVector(prop){
     const [liVector,setLiVector] = useState({});
    
     function getItemData(e){
-        let x = e.currentTarget.textContent;
-       dispatch(SelectedCityItem(x))
-        console.log(x)
+        let city = e.currentTarget.textContent;
+       dispatch(SelectedCityItem(city))
+       
     }
 
     function liMouseOver(){
