@@ -28,12 +28,14 @@ function ForeCast(props) {
 
 
     useEffect(() => {
-        if (cityName.name) {
+        
+        if (cityName.name ) {
             fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName.name}&lang=ru&units=metric&APPID=535f8a50b4bc24608c72fcde2aecb52b`)
 
                 .then(res => res.json())
                 .then(
                     (result) => {
+                        
                         dispatch(CityDataArray(result.list[0]))
                         setHourArr(result.list.slice(0, 12))
                         setWeekArr(() => [
@@ -45,13 +47,16 @@ function ForeCast(props) {
                             result.list[35],
                             result.list[38]
                         ])
+                        dispatch(PreloadState(true))
                     }
                 )
                 
-            dispatch(PreloadState(true));
+               
         } else { }
 
     }, [cityName])
+    
+  
 
     function byWeekBtn() {
         if (weekCount !== 1) {
@@ -350,7 +355,7 @@ function ForeCast(props) {
                     <div className="forecast-cards-week" style={displayFirst}>
 
 
-                        {weekArr[0] !== undefined && preloadState === true ? weekArr.map(el => {
+                        {weekArr[0] !== undefined && preloadState === true ?  weekArr.map(el => {
                             return (
                                 <CardWeek key={Math.random()}
                                     props={{
