@@ -1,4 +1,4 @@
-# ReactJS
+# React
 
 Перенос адптивной верстки на React.js, + функционал. Рабочее приложение <a href="https://zrs-eclid.tmweb.ru/">zrs-eclid.tmweb.ru</a>
 
