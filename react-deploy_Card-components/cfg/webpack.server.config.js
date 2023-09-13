@@ -1,5 +1,7 @@
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
+const { DefinePlugin } = require('webpack')
+
 const NODE_ENV = process.env.NODE_ENV;
 const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 
@@ -36,7 +38,7 @@ module.exports = {
           },
         ],
         exclude: GLOBAL_CSS_REGEXP
-      },{
+      }, {
         test: GLOBAL_CSS_REGEXP,
         use: ['css-loader']
       }
@@ -45,4 +47,6 @@ module.exports = {
   optimization: {
     minimize: false,
   },
+  ///тут должен быть IS_DEV ? 'eval' : false,
+  plugins: [new DefinePlugin({'process.env.CLIENT_ID':`'${process.env.CLIENT_ID}'`})]
 };

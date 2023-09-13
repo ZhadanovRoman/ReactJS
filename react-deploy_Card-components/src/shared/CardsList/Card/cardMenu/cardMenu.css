@@ -1,14 +1,11 @@
-.menu {
-    position: absolute;
-    top: 10px;
-    right: 2.5%;
-}
+
 .menuButton {
     width: 31px;
     height: 31px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 19px ;
     transform: rotate(90deg);
     border-radius: 30px;
     background: transparent;
@@ -21,10 +18,7 @@
 
 
 @media all and (min-width: 1024px){
-    .menu {
-        top: 42px;
-        right: 8%;
-    }
+   
     .menuButton {
         transform: rotate(0);
     }

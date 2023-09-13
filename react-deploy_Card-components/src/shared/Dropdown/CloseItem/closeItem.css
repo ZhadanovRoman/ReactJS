@@ -1,0 +1,14 @@
+.closeItemBlock{
+    display: flex;
+    justify-content: center;
+    padding: 12px 0 ;
+   background-color: #D9D9D9;
+}
+.closeItemSpam{
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    line-height: 16.41px;
+    color: var(--grey66);
+    
+}
