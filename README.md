@@ -6,5 +6,5 @@ _____
 
 "weatherApp"
 
-<img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/1.bmp"> <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/2.bmp">
-
+<img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/1.bmp"> <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/3.jpg">
+<img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/7.jpg">
