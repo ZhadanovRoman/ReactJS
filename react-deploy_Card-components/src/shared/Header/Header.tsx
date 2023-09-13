@@ -4,12 +4,16 @@ import { SearchBlock } from './SearchBlock';
 import { ThreadTitle } from './ThreadTitle/ThreadTitle';
 import { SortBlock } from './SortBlock/SortBlock';
 
+
+
 export function Header() {
+  
+  
   return (
-<header className={styles.header}>
-<SearchBlock/>
- <ThreadTitle/>
-  <SortBlock/>
-</header>
+    <header className={styles.header}>
+      <SearchBlock />
+      <ThreadTitle />
+      <SortBlock />
+    </header>
   );
 }
