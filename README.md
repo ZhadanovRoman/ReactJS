@@ -19,5 +19,5 @@ props передаются при помощи Redux
 
 # RedditApp/
 
-<img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/1.bmp">
+<img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/reddi1.jpg">  <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/reddi2.jpg">
 
