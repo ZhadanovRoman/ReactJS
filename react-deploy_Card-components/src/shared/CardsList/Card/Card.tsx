@@ -15,6 +15,7 @@ import { ComplainItem } from "../../Dropdown/СomplainItem/ComplainItem";
 import { CloseItem } from "../../Dropdown/CloseItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../reducers";
+import { getTimePost } from "../../../utils/react/getTimePost";
 
 const LIST = [
   { value: <CommentItem /> },
@@ -33,11 +34,12 @@ export function Card() {
 
 
   function createItem(){
+
   if (bestPostsData && bestPostsData !== undefined) {
-    
+   
   const  Item = bestPostsData.map((el: any) => 
   <li className={styles.card} key={Math.random()}>
-  <CardTextContent author={el.data.author} title={el.data.title} avatar={el.data.sr_detail.icon_img} createItemDate={el.data.created_utc}/>
+  <CardTextContent author={el.data.author} title={el.data.title} avatar={el.data.sr_detail.icon_img} createItemDate={getTimePost(el.data.created_utc)}/>
   <CardImg thumbnail={el.data.preview.images[0].source.url
 }/>
   <CardNavy />
