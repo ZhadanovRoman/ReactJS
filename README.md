@@ -1,6 +1,6 @@
 # React
 
-Перенос адптивной верстки на React.js, + функционал. Рабочее приложение <a href="https://zrs-eclid.tmweb.ru/">zrs-eclid.tmweb.ru</a>
+Приложение прогноза погоды с использованием OpenWeatherMap API. Все запросы работают при помощи Promise. Из сторонних библиотек используется только Redux и подключен preloader, остальной функционал написан на JS и JSX. Рабочее приложение <a href="https://zrs-eclid.tmweb.ru/">zrs-eclid.tmweb.ru</a>
 
 _____
 
