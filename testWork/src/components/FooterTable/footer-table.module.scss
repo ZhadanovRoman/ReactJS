@@ -1,0 +1,43 @@
+.tabFooter {
+    position: absolute;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    bottom: 0;
+    background: rgba(244, 247, 252, 0.75);
+    backdrop-filter: blur(4px);
+
+    &__allPages {
+        display: flex;
+        width: 6%;
+        justify-content: space-between;
+    }
+
+    &__paginatBlock {
+        display: flex;
+        align-items: center;
+    }
+
+    &__pagination {
+        display: flex;
+        justify-content: space-between;
+        width: 95px;
+
+    }
+
+    &__rightBtn,
+    &__leftBtn {
+        width: 24px;
+        height: 20px;
+        background-image: url('../../../public/Button.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 6px;
+        box-shadow: 0px 0px 0px 1px rgba(70, 79, 96, 0.24);
+    }
+
+    &__leftBtn {
+        transform: rotate(180deg);
+    }
+}
