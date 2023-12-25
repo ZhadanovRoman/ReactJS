@@ -21,3 +21,6 @@ props передаются при помощи Redux.
 
 <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/reddi1.jpg">  <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/1.jpg">
 
+_____
+
+# TeseWork+

@@ -1,0 +1,104 @@
+@import '../../roots.scss';
+
+.headerTable {
+    background: rgba(244, 247, 252, 0.75);
+    backdrop-filter: blur(4px);
+    padding-top: 16px;
+    border-bottom: 1px solid $Gray-50;
+    position: relative;
+    &__inpt {
+        width: 320px;
+        height: 32px;
+        margin: 0 0 16px 76px;
+        padding-left: 36px;
+        border-radius: 6px;
+        background: $white;
+        box-shadow: 0px 0px 0px 1px rgba(104, 113, 130, 0.16), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+        background-image: url('../../../public/Search.svg');
+        background-repeat: no-repeat;
+        background-position: 2% 50%;
+    }
+
+    &__list {
+        
+        display: flex;
+        margin: 0;
+    }
+
+    &__item {
+        position: relative;
+        width: 22%;
+        margin-right: 50px;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+   
+    &__arrow{
+        position: relative;
+        opacity: 1;
+    }
+    &__arrowTop{
+        position: relative;
+        opacity: 0;
+    } 
+    &__arrowBottom{
+        position: relative;
+        opacity: 0;
+    }
+
+
+    &__item:first-child{
+        padding-left: 40px;
+        margin-right: 0;
+        width: 6%;
+    }
+    &__item:nth-child(2){
+        padding-left: 32px;
+    }
+    &__item:nth-child(3) span{ // выкл стрелки
+        display: none;
+    }
+    &__item:last-child{
+        padding-left: 70px;
+    }
+
+    &__arrowBottom::after,
+    &__arrowTop::after,
+    &__arrow::after {
+        content: '';
+        position: absolute;
+        top: 1px; 
+        left: 3px;
+        width: 0;
+        height: 0;
+        border-left: 3.5px solid transparent;
+        border-right: 3.5px solid transparent;
+        border-bottom: 5px solid $Gray-200;
+    }
+    &__arrowBottom::before,
+    &__arrowTop::before,
+    &__arrow::before {
+        content: '';
+        position: absolute;
+        top: 8px; 
+        left: 3px;
+        width: 0;
+        height: 0;
+        border-left: 3.5px solid transparent;
+        border-right: 3.5px solid transparent;
+        border-bottom: 5px solid $Gray-200;
+        transform: rotate(180deg);
+    }
+
+
+   
+    &__arrowBottom::before {
+        border-bottom: 5px solid $Gray-900;
+    }
+
+    &__arrowTop::after {
+        border-bottom: 5px solid $Gray-900;
+    }
+   
+}
+
