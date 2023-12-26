@@ -1,39 +1,38 @@
 import { useEffect, useRef, useState } from 'react';
+import axios from 'axios'
 import styles from './table.module.scss';
 import { useDispatch, useStore } from 'react-redux';
 import { RootState, clickStAction, clickTypeAction, mainArrAction } from '../../reducers';
-import { useSortHook } from '../../hooks/useSortHook';
+import { useSortHook } from '../../hooks/SortHook';
 import FooterTable from '../FooterTable/FooterTable';
 import HeaderTable from '../HeaderTable/HeaderTable';
-import { useDataOperations } from '../../hooks/useDataOperationsHook';
-
 
 
 
 
 const Table = () => {
    const [mainArrLength, setMainArrLength] = useState();
+   const [mainData, setMainData] = useState<any>();
+   const [load, setLoad] = useState<boolean>(true);
    const [renderArr, setRenderArr] = useState<any>();
    const [renderArgument, setRenderArgument] = useState<Array<any> | undefined>();
    const [inpt, setInpt] = useState<string | null | number>(15);
-   const [rightBtn, setRightBtn] = useState<boolean>(false);
-   const [leftBtn, setLeftBtn] = useState<boolean>(false);
-   
+   const [dataNextPrev, setDataNextPrev] = useState<Array<any> | undefined>();
+   const [rightBtn, setRightBtn] = useState(false);
+   const [leftBtn, setLeftBtn] = useState(false);
    const store = useStore<RootState>();
+
    const dispatch = useDispatch();
-
-   const {mainData, load} = useDataOperations({inpt, leftBtn, rightBtn})
-
    dispatch(mainArrAction(mainData));
-   
+
    
     
 
    const [clickState, setClickState] = useState<boolean>(false);
    const [clickType, setClickType] = useState<string>('');
-   
+
    useSortHook(clickState, clickType);
-   
+
    dispatch(clickStAction(clickState));
    dispatch(clickTypeAction(clickType));
 
@@ -74,7 +73,69 @@ const Table = () => {
       }
    }
 
- 
+  const rightBtnCount = useRef<number>(0);
+  
+  const leftBtnCount = useRef<number>(0);
+   useEffect(() => {
+      axios.get('https://rickandmortyapi.com/api/location')
+         .then(response => {
+            const data = response.data.results
+            setDataNextPrev(data)
+           
+            if(dataNextPrev){
+            if (inpt && inpt !== '0') {// меняем размер массива по данным из инпута
+               let newArr =dataNextPrev.slice(0, Number(inpt)) 
+              
+               setMainData(newArr)
+             
+            } else { //render default
+               let newArr = dataNextPrev.slice(0, 15)
+               setMainData(newArr);
+              
+            }
+         }else{
+            if (inpt && inpt !== '0') {// меняем размер массива по данным из инпута
+               let newArr =data.slice(0, inpt) 
+              
+               setMainData(newArr)
+             
+            } else { //render default
+               let newArr =data.slice(0, 15)
+               setMainData(newArr);
+              
+            }
+         }
+            if (rightBtn ) {// нужно вынеси в функцию повторы
+               rightBtnCount.current++;
+               if(leftBtnCount.current){leftBtnCount.current--}
+               let formula = Number(inpt)*rightBtnCount.current
+               let newArrSlice = data.slice(formula)
+               let newArr = newArrSlice.slice(0, inpt)
+               setDataNextPrev(newArr)
+                  setMainData(newArr)
+                 
+            }
+            
+               if (leftBtn ) {
+                  leftBtnCount.current++;
+                  if(rightBtnCount.current){rightBtnCount.current--}
+                  let formula = Number(inpt)*rightBtnCount.current
+                  let newArrSlice = data.slice(formula)
+                  let newArr = newArrSlice.slice(0, inpt)
+                  setDataNextPrev(newArr)
+                     setMainData(newArr)
+               }
+            
+         })
+         .catch(error => {
+
+            console.error('Ошибка при запросе данных:', error);
+         })
+         .finally(() => {
+            setLoad(false)
+         });
+
+   }, [inpt, rightBtn, leftBtn]);
 
    const handleLeftBtn = (state: boolean | ((prevState: boolean) => boolean)) => {
       setLeftBtn(state)
@@ -83,17 +144,15 @@ const Table = () => {
    const handleRightBtn = (state: boolean | ((prevState: boolean) => boolean)) => {
       setRightBtn(state)  
    }
-   const selectValCount = useRef<number|undefined|null >()
-   selectValCount.current=1;
+
    const handleInputChange = (value: any) => { //прокидываем state от инпута
       setInpt(value);
-           
-      const selectValue = store.getState().selectValRdcr.contxt.selectVal;
-     
-      if(selectValue && !value){
+
+      const selectValue = store.getState().selectValRdcr.contxt.selectVal
+      if(selectValue){
          setInpt( selectValue )//// передача числа из SELECT
       }
-    
+      
    }
 
    useEffect(() => {// передача массива в render
