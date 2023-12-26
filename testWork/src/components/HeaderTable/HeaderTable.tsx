@@ -42,7 +42,7 @@ const HeaderTable = ({ name, type, url, onInputChange }: IHeaderProps) => {
         propsArr.push(type);
     }
 
-
+    console.log(inptFocus)
 
     const item = propsArr.map((el, index) =>
         <li className={styles.headerTable__item} key={index} >{el}<span className={styles.headerTable__arrow} />
@@ -50,7 +50,13 @@ const HeaderTable = ({ name, type, url, onInputChange }: IHeaderProps) => {
     )
     return (
         <div className={styles.headerTable}>
-            <input type="text" placeholder="Введите или выберите число отоброжаемых строк" className={styles.headerTable__inpt} onChange={getValue} onFocus={()=>setInptFocus(true)}/>
+            <input type="text" placeholder="Введите или выберите число отоброжаемых строк" className={styles.headerTable__inpt} onChange={getValue} 
+            onClick={()=>{
+          if(inptFocus){
+            setInptFocus(false)
+          }else{setInptFocus(true)}
+        }
+    }/>
             <ul className={styles.headerTable__list}>{item}</ul>
             <SelectMenu inputFocus={inptFocus}/>
         </div>

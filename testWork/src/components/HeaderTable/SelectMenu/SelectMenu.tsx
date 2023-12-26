@@ -19,12 +19,11 @@ const SelectMenu = (props: { inputFocus: boolean }) => {
             dispatch(selectValueAction(selectedOption));
         }
     }, [selectedOption, dispatch]);
-
+  
     const selectOptions = ['5', '10', '15', '20', '30', '40', '50'];
     const item: JSX.Element[] = selectOptions.map((el: string, index: number) => (
         <li key={index} className={styles.select__item} onClick={(e: React.MouseEvent<HTMLLIElement>) => {
-            setSelectedOption(e.currentTarget.textContent as string);
-            setInptFocus(false);
+            setSelectedOption(e.currentTarget.textContent as string); 
         }}>{el}</li>
     ));
 
