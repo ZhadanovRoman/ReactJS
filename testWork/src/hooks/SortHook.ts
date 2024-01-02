@@ -15,10 +15,10 @@ interface IProps {
 
 export const useSortHook = (clickState: boolean | undefined, clickType: string) => {
     //const [sortArr, setSortArr] = useState<any>()
-
+    
     const store = useStore<RootState>();
     const mainArr = store.getState().mainArrRdcr.contxt.mainArr;
-
+    
     const dispatch = useDispatch();
     useEffect(() => {
 

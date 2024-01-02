@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './footer-table.module.scss';
 
+
+
 interface IProps {
-    tableLength: string,
-     handleRight: (arg0: boolean) => void, 
-     handleLeft:(arg0: boolean) => void,
-     row: string | null | number | undefined
+    pageCount: number,
+    numberPages: number | undefined,
+    tableLength: string | number,
+    handleRight: (arg0: boolean) => void,
+    handleLeft: (arg0: boolean) => void,
+    row: string | null | number | undefined,
+    firstData: Array<any>
 }
 
 
@@ -15,36 +20,43 @@ const FooterTable = (props: IProps) => {
 
     props.handleRight(rightC)
     props.handleLeft(leftC)
-
+    const clickCounter = useRef<number>(0)
     const rightClick = () => {
-        if(!rightC){
-            setLeftC(false)
+        if (!rightC) {
+
             setRightC(true);
-        }else{setRightC(false)}
-           // setTimeout(() => { setRightC(false) }, 150);
+            if (clickCounter.current < (Number(props.firstData.length) / Number(props.tableLength) - 1)) {
+                clickCounter.current++
+            }
+            setTimeout(() => { setRightC(false) }, 150);
+        }
     }
+
     const leftClick = () => {
-        if(!leftC){
-            setRightC(false)
+        if (!leftC) {
             setLeftC(true);
-        }else{setLeftC(false)}
-
-           // setTimeout(() => { setLeftC(false) }, 150);
-        
+            if(clickCounter.current>0){
+                clickCounter.current--
+            }
+            
+            setTimeout(() => { setLeftC(false) }, 150);
+        }
+    }
+    let rowCount = 1
+    if (clickCounter.current >= 1) {
+        rowCount = clickCounter.current * Number(props.tableLength)
     }
 
-
-    //кал-во строк в паганаторе задается из инпута поиска либо при фокусе либо от ввода
     return (
         <div className={styles.tabFooter}>
             <div className={styles.tabFooter__allPages}>
-                <div><span>1</span>/<span>{props.row? props.row : '15'}</span></div>of<div>{props.tableLength}</div>
+                <div><span>{rowCount}</span>-<span>{Number(props.tableLength) * (clickCounter.current + 1)}</span></div>of<div>{props.firstData.length}</div>
             </div>
             <div className={styles.tabFooter__paginatBlock}>
                 <span></span>
                 < div className={styles.tabFooter__pagination}>
                     <button className={styles.tabFooter__leftBtn} onClick={leftClick}></button>
-                    <span className={styles.tabFooter__betweenBtns}>1/2</span>
+                    <span className={styles.tabFooter__betweenBtns}>{props.pageCount}/{props.numberPages}</span>
                     <button className={styles.tabFooter__rightBtn} onClick={rightClick}></button>
                 </div>
             </div>

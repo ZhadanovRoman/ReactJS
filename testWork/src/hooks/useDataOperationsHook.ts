@@ -1,24 +1,41 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
+import { useSelector } from "react-redux";
+
 
 interface IDataProps {
     inpt: string | null | number,
     leftBtn: boolean,
-    rightBtn: boolean
+    rightBtn: boolean,
+
+}
+interface IState {
+    apiSelectRdcr: {
+        contxt: {
+            apiSelectVal: string
+        }
+    }
 }
 
 export const useDataOperations = ({ inpt, leftBtn, rightBtn }: IDataProps) => {
+
     const [load, setLoad] = useState<boolean>(true);
+    const [firstData, setFirstData] = useState<Array<any>>()
+    const [numRows, setNumRow] = useState<string | number>();
+    const [pageCount, setPageCount] = useState<number>(1)
     const [dataNextPrev, setDataNextPrev] = useState<Array<any> | undefined>();
     const [mainData, setMainData] = useState<any>();
     const rightBtnCount = useRef<number>(0);
+    const apiLink = useSelector((state: IState) => state.apiSelectRdcr.contxt.apiSelectVal);
 
-    const leftBtnCount = useRef<number>(0);
+
     useEffect(() => {
-        axios.get('https://rickandmortyapi.com/api/location')
+        // (function() {
+        axios.get(apiLink || 'https://rickandmortyapi.com/api/location')
             .then(response => {
                 const data = response.data.results;
+                setFirstData(data)
                 setDataNextPrev(data);
 
                 if (dataNextPrev) {
@@ -31,19 +48,29 @@ export const useDataOperations = ({ inpt, leftBtn, rightBtn }: IDataProps) => {
                     }
                 }
                 if (!inpt) { inpt = 15 }
+
+
+
                 if (rightBtn) {// нужно вынеси в функцию повторы
+
                     rightBtnCount.current++;
-                    if (leftBtnCount.current) { leftBtnCount.current-- };
-                    let formula = Number(inpt) * rightBtnCount.current;
-                    let newArrSlice = data.slice(formula);
-                    let newArr = newArrSlice.slice(0, inpt);
-                    setDataNextPrev(newArr);
-                    setMainData(newArr);
-                 
+                    let rigtBtnFn=()=>{
+                        let formula = Number(inpt) * rightBtnCount.current;
+                        let newArrSlice = data.slice(formula);
+                        let newArr = newArrSlice.slice(0, inpt);
+                        setDataNextPrev(newArr);
+                        setMainData(newArr);
+                    }
+                    if (Number(inpt) * rightBtnCount.current >= data.length) {
+                        rightBtnCount.current--
+                        rigtBtnFn();
+                    } else {
+                        rigtBtnFn();
+                    }
                 }
 
                 if (leftBtn) {
-                    leftBtnCount.current++;
+
                     if (rightBtnCount.current) { rightBtnCount.current-- };
                     let formula = Number(inpt) * rightBtnCount.current;
                     let newArrSlice = data.slice(formula);
@@ -51,7 +78,11 @@ export const useDataOperations = ({ inpt, leftBtn, rightBtn }: IDataProps) => {
                     setDataNextPrev(newArr);
                     setMainData(newArr);
                 }
+                if (inpt) {
+                    setNumRow(inpt)
+                }
 
+                setPageCount(rightBtnCount.current + 1)
             })
             .catch(error => {
 
@@ -60,8 +91,9 @@ export const useDataOperations = ({ inpt, leftBtn, rightBtn }: IDataProps) => {
             .finally(() => {
                 setLoad(false)
             });
+        // })();
+    }, [inpt, rightBtn, leftBtn, apiLink]);
 
-    }, [inpt, rightBtn, leftBtn]);
+    return { mainData, load, firstData, pageCount }
 
-    return { mainData, load }
 }
