@@ -15,7 +15,7 @@
     font-weight: 600;
     line-height: 16px;
     letter-spacing: 0.44px;
-    text-transform: uppercase;
+    color: $Gray-700;
 
     &__list {
         padding-left: 45px;
@@ -25,16 +25,25 @@
             padding-left: 40px;
             padding: 12px 0;
 
+
             span {
                 width: 25%;
             }
 
             span:first-child {
                 width: 5%;
+                color: $Gray-900;
+                font-weight: 500;
+            }
+
+            span:nth-child(2) {
+                color: $Gray-900;
+                font-weight: 500;
             }
 
             span:nth-child(3) {
                 width: 35%;
+                font-weight: 400;
             }
         }
     }

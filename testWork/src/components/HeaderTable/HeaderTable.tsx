@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import styles from './header-table.module.scss';
 import { useDispatch } from 'react-redux';
-import { inptValueAction } from '../../reducers';
+import { apiSelectAction, inptValueAction } from '../../reducers';
 import SelectMenu from './SelectMenu/SelectMenu';
 
 
@@ -16,14 +16,15 @@ interface IHeaderProps {
 }
 
 const HeaderTable = ({ name, type, url, onInputChange }: IHeaderProps) => {
+
     const dispatch = useDispatch();
 
     const [inptVal, setInptVal] = useState<any>();
-    const [inptFocus,setInptFocus] = useState<boolean>(false)
+    const [inptFocus, setInptFocus] = useState<boolean>(false)
+    const [apiSel, setApiSel] = useState<string>()
+    dispatch(apiSelectAction(apiSel))
 
-   
     function getValue(e: ChangeEvent<HTMLInputElement>) {
-
         setTimeout(() => { setInptVal(e.target.value.replace(/\D/g, '')) }, 1500);
         console.log(inptVal)
     };
@@ -42,23 +43,30 @@ const HeaderTable = ({ name, type, url, onInputChange }: IHeaderProps) => {
         propsArr.push(type);
     }
 
-    console.log(inptFocus)
-
     const item = propsArr.map((el, index) =>
         <li className={styles.headerTable__item} key={index} >{el}<span className={styles.headerTable__arrow} />
             <span className={styles.headerTable__arrowBottom}></span><span className={styles.headerTable__arrowTop}></span></li>
     )
     return (
         <div className={styles.headerTable}>
-            <input type="text" placeholder="Введите или выберите число отоброжаемых строк" className={styles.headerTable__inpt} onChange={getValue} 
-            onClick={()=>{
-          if(inptFocus){
-            setInptFocus(false)
-          }else{setInptFocus(true)}
-        }
-    }/>
+            <input type="text" placeholder="Введите или выберите число отоброжаемых строк" className={styles.headerTable__inpt} onChange={getValue}
+                onClick={() => {
+                    if (inptFocus) {
+                        setInptFocus(false)
+                    } else { setInptFocus(true) }
+                }
+                } />
+            <div className={styles.headerTable__apiSelBlock}>
+                <label htmlFor="apiSelect">Выберите ссылку:</label>
+                <select name="apiSelect" id="apiSelect" className={styles.headerTable__apiSelect} onChange={(e) => {if(e.target.value ){
+                    setApiSel(e.target.value)
+                } }}>
+                    <option value="https://rickandmortyapi.com/api/location">https://rickandmortyapi.com/api/character</option>
+                    <option value="https://rickandmortyapi.com/api/character">https://rickandmortyapi.com/api/location</option>
+                </select>
+            </div>
             <ul className={styles.headerTable__list}>{item}</ul>
-            <SelectMenu inputFocus={inptFocus}/>
+            <SelectMenu inputFocus={inptFocus} />
         </div>
 
     )

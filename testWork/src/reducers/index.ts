@@ -6,6 +6,7 @@ import clickState from './ClickState';
 import mainArrRdcr from './MainArr';
 import inptValRdcr from "./InptVal";
 import selectValRdcr from "./SelectedVal";
+import apiSelectRdcr from "./ApiSelect";
 
 
 export type RootState = {
@@ -35,6 +36,11 @@ export type RootState = {
     mainArrRdcr: {
         contxt: {
             mainArr: Array<any>
+        }
+    },
+    apiSelectRdcr: {
+        contxt: {
+            apiSelectVal: string
         }
     }
 
@@ -66,6 +72,9 @@ export const selectValueAction: ActionCreator<AnyAction> = (selectVal) => ({
     type: 'SELECT_VAL',
     selectVal
 })
+export const apiSelectAction: ActionCreator<AnyAction> = (apiSelectVal) => ({
+    type: 'API_SELECT',
+    apiSelectVal
+})
 
-
-export const combineReducer = combineReducers({ clickState, clickTypeRdcr, mainArrRdcr, sortArrRdcr, inptValRdcr, selectValRdcr });
+export const combineReducer = combineReducers({ clickState, clickTypeRdcr, mainArrRdcr, sortArrRdcr, inptValRdcr, selectValRdcr, apiSelectRdcr });

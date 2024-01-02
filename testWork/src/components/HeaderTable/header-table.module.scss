@@ -6,6 +6,7 @@
     padding-top: 16px;
     border-bottom: 1px solid $Gray-50;
     position: relative;
+    
     &__inpt {
         width: 320px;
         height: 32px;
@@ -23,6 +24,7 @@
         
         display: flex;
         margin: 0;
+        text-transform: uppercase;
     }
 
     &__item {
@@ -99,6 +101,14 @@
     &__arrowTop::after {
         border-bottom: 5px solid $Gray-900;
     }
-   
+    &__apiSelBlock{
+        position: absolute;
+        left: 45%;
+        top: 15%;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+    }
+ 
 }
 
