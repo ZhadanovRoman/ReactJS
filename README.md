@@ -1,3 +1,13 @@
+# TeseWork
+-Таблица получающая данные с API с возможностью переключать ссылку для get-запроса.
+-Возможность выбора(переключения) числа отоброжаемых строк данных выводимых на странице.
+-Сортировка строк по значения в зависимости от выбранной колонки (NAME,TYPE и т.д.)
+-Пагинация страниц.
+-Вывод информации о кол-ве просматриваемых страниц, остатке, и общем кол-ве страниц.
+
+<img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/testTable.jpg">
+____
+
 # React
 
 Приложение прогноза погоды с использованием OpenWeatherMap API. Все запросы работают при помощи Promise. Из сторонних библиотек используется только Redux и подключен preloader, остальной функционал написан на JS и JSX. Рабочее приложение <a href="https://zrs-eclid.tmweb.ru/">zrs-eclid.tmweb.ru</a>
@@ -21,6 +31,5 @@ props передаются при помощи Redux.
 
 <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/reddi1.jpg">  <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/1.jpg">
 
-_____
 
-# TeseWork+
+
