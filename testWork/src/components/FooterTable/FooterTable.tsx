@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './footer-table.module.scss';
 
 
@@ -21,6 +21,11 @@ const FooterTable = (props: IProps) => {
     props.handleRight(rightC)
     props.handleLeft(leftC)
     const clickCounter = useRef<number>(0)
+
+useEffect(()=>{
+clickCounter.current=0
+},[props.tableLength])
+
     const rightClick = () => {
         if (!rightC) {
 

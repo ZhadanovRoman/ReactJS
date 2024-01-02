@@ -29,9 +29,11 @@ export const useDataOperations = ({ inpt, leftBtn, rightBtn }: IDataProps) => {
     const rightBtnCount = useRef<number>(0);
     const apiLink = useSelector((state: IState) => state.apiSelectRdcr.contxt.apiSelectVal);
 
-
+    useEffect(()=>{
+     rightBtnCount.current=0;
+    },[inpt])
     useEffect(() => {
-        // (function() {
+     
         axios.get(apiLink || 'https://rickandmortyapi.com/api/location')
             .then(response => {
                 const data = response.data.results;
@@ -91,7 +93,7 @@ export const useDataOperations = ({ inpt, leftBtn, rightBtn }: IDataProps) => {
             .finally(() => {
                 setLoad(false)
             });
-        // })();
+    
     }, [inpt, rightBtn, leftBtn, apiLink]);
 
     return { mainData, load, firstData, pageCount }
