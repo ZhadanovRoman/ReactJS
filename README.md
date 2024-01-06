@@ -4,6 +4,7 @@
 -Сортировка строк по значения в зависимости от выбранной колонки (NAME,TYPE и т.д.)
 -Пагинация страниц.
 -Вывод информации о кол-ве просматриваемых страниц, остатке, и общем кол-ве страниц.
+Рабочее приложение <a href="https://dubles.tw1.su/">dubles.tw1.su</a>
 
 <img style="width:300px;" src="https://github.com/ZhadanovRoman/ReactJS/blob/masterReact/react-img/testTable.jpg">
 ____
