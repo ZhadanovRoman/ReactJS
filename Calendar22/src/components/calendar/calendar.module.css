@@ -1,0 +1,102 @@
+.calendar {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px 0 50px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)
+}
+.title{
+    align-self: start;
+    padding-left: 5px;
+}
+.calendar_title_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.month_block {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+.month{
+    font-weight: 600;
+}
+.month::first-letter{
+    text-transform: uppercase;
+}
+.month_right_btn {
+    transform: rotate(180deg);
+}
+
+.days_list {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.week_day_item {
+    width: 14%;
+    font-size: 8px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: var(--greyC4);
+    text-align: center;
+
+}
+
+.number_days_list {
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+   
+}
+
+.calendar_item {
+    width: 14%;
+    font-size: 10px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calendar_item:hover {
+outline: 1px solid var(--green);
+    border-radius: 3px;
+}
+
+.button {
+    padding: 8px 0;
+    margin-bottom: 10px;
+    background-color: var(--green);
+    color: var(--white);
+    font-size: 8px;
+    font-family: 'Roboto';
+    border-radius: 5px;
+    
+}
+
+@media (max-width: 400px) {
+    .calendar {
+        padding: 10px 5px ;
+    }
+    .month,
+    .title{
+        font-size: 12px;
+        font-weight: 600;
+    }
+   
+    .month_block {
+
+        width: 100%;
+
+    }
+}
